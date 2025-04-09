@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Last of Us 2 - Cuenta Regresiva</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=League+Gothic&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="contenedor">
+        <h1>THE LAST OF US PARTE II
+        </h1>
+        <h2>Cuenta regresiva para el estreno</h2>
+        <div id="cuenta"></div>
+
+
+    </div>
+
+
+
+    <div class="contenedor-botones">
+        <!-- Botón HBO Max -->
+        <a href="https://www.max.com" class="boton hbo" target="_blank">
+            <img src="icon/512px-HBO_Max_2024.svg.png" alt="HBO Max" class="icono">
+
+        </a>
+
+        <!-- Botón PlayStation -->
+        <a href="https://store.playstation.com/product/UP9000-CUSA07820_00-THELASTOFUSPART2" class="boton ps"
+            target="_blank">
+            <img src="icon/logo play.png" alt="PlayStation" class="icono">
+
+        </a>
+
+        <!-- Botón Portafolio -->
+        <a href="https://ezegz.vercel.app/" class="boton portafolio" target="_blank">
+            <img src="icon/EZE.png" alt="Portafolio" class="icono">
+
+        </a>
+    </div>
+
+    <div class="overlay-trailer" id="overlayTrailer">
+        <button class="boton-cerrar" onclick="cerrarTrailer()">✖</button>
+        <div class="trailer-video">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/_zHPsmXCjB0?si=oKMROfVaxZ9Ksdl-"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+
+
+
+    <div class="niebla-baja">
+        <div class="humo-bajo"></div>
+        <div class="humo-bajo"></div>
+        <div class="humo-bajo"></div>
+        <div class="humo-bajo"></div>
+    </div>
+
+
+
+   <!-- 🎵 Música de fondo -->
+<audio id="musica-fondo" autoplay loop>
+    <source src="music/The Last of Us Theme (Gingertail Cover).mp3" type="audio/mpeg">
+    Tu navegador no soporta audio HTML5.
+</audio>
+
+<!-- 🔘 Control de música + leyenda -->
+<div class="control-musica">
+    <button id="toggle-musica" aria-label="Controlar música">🔊</button>
+    <span class="leyenda-musica">🎶 Sonando: Cover de Alina Gingertail The Last of Us Theme (YouTube)</span>
+</div>
+
+    <footer>
+        <button onclick="mostrarTrailer()">
+            <img src="img/klipartz.com.png" alt="Play" class="icono-play" />
+            Ver Tráiler
+        </button>
+    </footer>
+
+<!-- 🎵 Música de fondo -->
+<audio id="musica-fondo" loop>
+    <source src="music/The Last of Us Theme (Gingertail Cover).mp3" type="audio/mpeg">
+    Tu navegador no soporta audio HTML5.
+</audio>
+
+<!-- 🎧 Botón flotante con imagen personalizada -->
+<button id="icono-musica" aria-label="Música" class="btn-icono-musica">
+    <img src="icon/descarga.png" alt="Ícono de música" class="icono-musica-img">
+</button>
+
+<!-- 🎚️ Panel musical -->
+<div class="control-musica" id="panel-musica">
+    <button id="btn-play" aria-label="Reproducir música">▶️</button>
+    <button id="btn-pause" aria-label="Pausar música" style="display: none;">⏸️</button>
+    <span class="leyenda-musica">
+        <span>🎵 Sonando: Cover de <a href="https://www.youtube.com/@AlinaGingertail" target="_blank">Alina Gingertail</a> – The Last of Us Theme 🎵 </span>
+    </span>
+</div>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>

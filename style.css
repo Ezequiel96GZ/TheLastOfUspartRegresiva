@@ -1,0 +1,530 @@
+@font-face {
+    font-family: 'PressGothic';
+    src: url('font/PressGothic.woff') format('woff');
+}
+
+/* ========== GLOBAL ========== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'PressGothic', sans-serif;
+    background-color: #111;
+    color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-image: url('font/the-last-of-us-clickers.avif');
+    background-size: 105%;
+    background-position: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+    transition: background-position 0.1s ease-out;
+    padding: 20px;
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    body {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+}
+
+
+@media (max-width: 768px) {
+    ::before{
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+}
+
+
+/* Fondo animado de niebla */
+/* Niebla general - PC y tablet */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250%;
+    height: 200%;
+    background: url('0353cdf9b3b43ea8e16506cde3ec94ef.gif') repeat-x;
+    background-size: cover;
+    opacity: 0.12;
+    z-index: 1;
+    animation: niebla-baja 220s linear infinite;
+    pointer-events: none;
+}
+
+/* Niebla móvil */
+@media (max-width: 768px) {
+    body::before {
+        width: 200%;
+        height: 100%;
+        background-size: contain;
+        opacity: 0.18;
+        animation-duration: 300s;
+    }
+}
+
+@keyframes niebla-baja {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+
+
+/* ========== CONTENEDOR ========== */
+.contenedor {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 2rem;
+    border-radius: 10px;
+    z-index: 2;
+    position: relative;
+    max-width: 1000px;
+    width: 100%;
+}
+
+/* ========== TITULOS ========== */
+h1, h2 {
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin: 0;
+    color: #ffffff;
+    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
+    font-weight: normal;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+#cuenta {
+    font-size: 4rem;
+    margin-top: 2rem;
+}
+
+/* ========== BOTONES CON ICONOS ========== */
+.contenedor-botones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 2.5rem;
+    justify-content: center;
+}
+
+.boton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: 12px;
+    text-decoration: none;
+    color: white;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 10px rgba(43, 18, 18, 0.3);
+    width: 75px;
+    height: 75px;
+    position: relative;
+    overflow: hidden;
+}
+
+.boton:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgb(0, 0, 0);
+}
+
+.icono {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* COLORES POR PLATAFORMA */
+.hbo {
+    background-color: #0d00ff;
+}
+
+.ps {
+    background-color: #ffffff;
+}
+
+.portafolio {
+    background-color: #000000;
+}
+
+.boton::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60%; /* achica el área de imagen */
+    height: 60%;
+    transform: translate(-50%, -50%);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 1;
+}
+
+/* Hover cambia a la nueva imagen */
+.boton:hover::after,
+.boton:focus::after {
+    opacity: 1;
+}
+
+.boton.hover::after {
+    opacity: 1;
+}
+
+.boton.hover .icono {
+    opacity: 0;
+}
+
+/* Oculta el icono original mientras ::after está activo */
+.boton:hover .icono,
+.boton:focus .icono {
+    opacity: 0;
+}
+
+/* ESPECÍFICOS POR BOTÓN */
+.boton.ps::after {
+    background-image: url('icon/playstore.png');
+   /* mando */
+}
+
+.boton.hbo::after {
+    background-image: url('icon/maxplay.png'); /* logo alternativo */
+}
+
+.boton.portafolio::after {
+    background-image: url('icon/web.png'); /* maletín */
+}
+
+/* ========== OVERLAY TRAILER ========== */
+.overlay-trailer {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.overlay-trailer.active {
+    display: flex;
+}
+
+.overlay-trailer .trailer-video {
+    width: 95vw;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+}
+
+.overlay-trailer.active .trailer-video {
+    animation: aparecerTranquilo 0.6s ease;
+}
+
+@keyframes aparecerTranquilo {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* BOTÓN DE CERRAR */
+.boton-cerrar {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 2rem;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+    transition: transform 0.2s;
+}
+
+.boton-cerrar:hover {
+    transform: scale(1.1);
+}
+
+/* FOOTER */
+footer {
+    margin-top: auto;
+    padding: 20px;
+    text-align: center;
+    z-index: 2;
+    position: relative;
+}
+
+footer button {
+    background-color: #fdfdfdba;
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    border-radius: 40px;
+    cursor: pointer;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s, background 0.3s;
+}
+
+footer button .icono-play {
+    width: 18px;
+    height: 18px;
+   
+}
+
+footer button:hover {
+    background-color: #d62525f6;
+    transform: scale(1.05);
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    #cuenta {
+        font-size: 2.5rem;
+    }
+
+    .boton {
+        width: 56px;
+        height: 56px;
+    }
+
+    .contenedor {
+        padding: 1.5rem;
+    }
+
+    .overlay-trailer .trailer-video {
+        width: 100%;
+        border-radius: 10px;
+    }
+}
+
+@keyframes entradaFantasma {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+        filter: blur(6px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+h1, h2 {
+    animation: entradaFantasma 2.5s ease-out;
+}
+
+
+h1 {
+    animation: entradaFantasma 1.5s ease-out forwards;
+}
+
+h2 {
+    animation: entradaFantasma 1.2s ease-out 0.4s forwards;
+}
+
+@keyframes brilloIntermitente {
+    0%, 100% {
+        opacity: 1;
+        text-shadow: 0 0 10px rgba(255,255,255,0.3);
+    }
+    40% {
+        opacity: 0.6;
+        text-shadow: none;
+    }
+    70% {
+        opacity: 0.9;
+        text-shadow: 0 0 6px rgba(255,255,255,0.15);
+    }
+}
+
+#cuenta {
+    animation: brilloIntermitente 2s infinite;
+}
+
+h1, #cuenta{
+    font-family: 'PressGothic', sans-serif;
+    font-size: 4rem;
+    background: url('img/1.png');
+    background-size: cover;
+  
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+h2{
+    font-family: 'PressGothic', sans-serif;
+    font-size: 1.5rem;
+    background: url('img/1.png');
+    background-size: cover;
+    color: transparent;
+    opacity: 0.9;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* 🔘 Botón flotante */
+.btn-icono-musica {
+    position: fixed;
+    right: 0;
+    bottom: 100px;
+    z-index: 1000;
+    background: transparent;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.icono-musica-img {
+    width: 55px;
+    height: 55px;
+    filter: drop-shadow(0 0 5px #000);
+    transition: transform 0.2s ease;
+}
+
+.btn-icono-musica:hover .icono-musica-img {
+    transform: scale(1.1);
+}
+
+/* 🎵 Panel musical */
+.control-musica {
+    position: fixed;
+    right: -340px;
+    bottom: 20px;
+    background: rgba(0, 0, 0, 0.75);
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px;
+    border-radius: 12px 0 0 12px;
+    z-index: 999;
+    font-size: 13px;
+    backdrop-filter: blur(6px);
+    max-width: 300px;
+    opacity: 0;
+    transition: right 0.5s ease, opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.control-musica a {
+    color: #99ccff;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.control-musica button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Mostrar panel con animación */
+.control-musica.activo {
+    right: 0;
+    opacity: 1;
+    pointer-events: auto;
+    animation: fadeSlide 0.5s ease forwards;
+}
+
+/* Animación de fade + slide */
+@keyframes fadeSlide {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* 💓 Heartbeat efecto */
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+@keyframes girar {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.icono-musica-img.girando {
+    animation: girar 3s linear infinite;
+}
+
+.icono-musica-img.latido {
+    animation: heartbeat 1s ease-in-out infinite;
+}
+
+/* 🎵 Marquee estilo Spotify */
+.leyenda-musica {
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+    max-width: 200px;
+    font-size: 13px;
+    flex: 1;
+}
+
+.leyenda-musica span {
+    display: inline-block;
+    padding-left: 100%;
+    animation: scrollTexto 15s linear infinite;
+}
+
+@keyframes scrollTexto {
+    from { transform: translateX(0%); }
+    to   { transform: translateX(-100%); }
+}
