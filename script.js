@@ -1,7 +1,7 @@
 
 const cuenta = document.getElementById("cuenta");
 // Fecha de estreno (ejemplo: 10 de junio de 2025 a las 22:00)
-const estreno = new Date("April 13, 2025 21:00:00").getTime();
+const estreno = new Date("April 20, 2025 21:00:00").getTime();
 
 function actualizarCuenta() {
   const ahora = new Date().getTime();
