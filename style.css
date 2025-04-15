@@ -18,7 +18,7 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    background-image: url('font/the-last-of-us-clickers.avif');
+    background-image: url('img/fONDO1.jpg');
     background-size: 105%;
     background-position: center;
     min-height: 100vh;
@@ -55,18 +55,18 @@ body::before {
     left: 0;
     width: 250%;
     height: 200%;
-    background: url('0353cdf9b3b43ea8e16506cde3ec94ef.gif') repeat-x;
+    background: url('nieve.gif') repeat-x;
     background-size: cover;
-    opacity: 0.12;
+    opacity: 0.2;
     z-index: 1;
-    animation: niebla-baja 220s linear infinite;
+    animation: niebla-baja  linear infinite;
     pointer-events: none;
 }
 
 /* Niebla móvil */
 @media (max-width: 768px) {
     body::before {
-        width: 200%;
+        width: 350%;
         height: 100%;
         background-size: contain;
         opacity: 0.18;
@@ -489,7 +489,7 @@ body {
     }
 }
 
-/* 💓 Heartbeat efecto */
+/*  Heartbeat efecto */
 @keyframes heartbeat {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.2); }
@@ -508,7 +508,7 @@ body {
     animation: heartbeat 1s ease-in-out infinite;
 }
 
-/* 🎵 Marquee estilo Spotify */
+
 .leyenda-musica {
     white-space: nowrap;
     overflow: hidden;

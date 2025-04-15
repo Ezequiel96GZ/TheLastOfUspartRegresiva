@@ -72,7 +72,7 @@ playBtn.addEventListener("click", () => {
         playBtn.style.display = "none";
         pauseBtn.style.display = "inline";
         leyendaTexto.style.animationPlayState = "running";
-        iconoImg.classList.add("girando");  // 🌀 empieza a girar
+        iconoImg.classList.add("girando");  // empieza a girar
     }).catch(err => {
         console.log("Autoplay bloqueado por el navegador.");
     });
@@ -84,7 +84,7 @@ pauseBtn.addEventListener("click", () => {
     pauseBtn.style.display = "none";
     playBtn.style.display = "inline";
     leyendaTexto.style.animationPlayState = "paused";
-    iconoImg.classList.remove("girando"); // 🛑 detiene giro
+    iconoImg.classList.remove("girando"); // 
 });
 
 // Pausar música si se abre el tráiler
@@ -94,7 +94,7 @@ const observer = new MutationObserver(() => {
         pauseBtn.style.display = "none";
         playBtn.style.display = "inline";
         leyendaTexto.style.animationPlayState = "paused";
-        iconoImg.classList.remove("girando"); // 🛑 detiene giro
+        iconoImg.classList.remove("girando"); 
     }
 });
 
